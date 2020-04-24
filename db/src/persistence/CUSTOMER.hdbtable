@@ -1,4 +1,4 @@
-TABLE "CUSTOMER"(
+COLUMN TABLE "CUSTOMER"(
 	"CUST_ID"				INTEGER NOT NULL	COMMENT 'Customer ID',
 	"CUST_CPF"				BIGINT				COMMENT 'Customer CPF is similar to the Social Security Number in US, but for Brazilian citizens and legally permanent foreigners',
 	"CUST_NAME" 			NVARCHAR(50)		COMMENT 'Customer name',
