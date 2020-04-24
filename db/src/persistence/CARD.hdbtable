@@ -1,0 +1,11 @@
+COLUMN TABLE "SHOWCASEHDI_1"."CARD"(
+	"CARD_ID"				INTEGER 	NOT NULL	COMMENT 'Card ID',
+	"CARD_NUM"				NVARCHAR(16)			COMMENT 'Card number',
+	"CARD_VALIDITY" 		NVARCHAR(5) 			COMMENT 'Card validity ',
+	"CARD_FLAG" 			INTEGER 				COMMENT 'Card flag - 1-Visa, 2-Mastercard, 3-ELO',
+	"CARD_CATEGORY" 		INTEGER 				COMMENT 'Card category - 1-Black, 2-Platinum, 3-Gold, 4-Standard',
+	"CARD_INTERNATIONAL"	INTEGER 				COMMENT 'Card international - 0-No, 1-Yes',
+	"CARD_LIMIT"			SMALLINT				COMMENT 'Card limit',
+	"CARD_STATUS"			INTEGER 				COMMENT 'Card status - 0-Blocked, 1-Active',
+	PRIMARY KEY ("CARD_ID")
+) UNLOAD PRIORITY 5 AUTO MERGE;;

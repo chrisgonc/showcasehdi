@@ -14,6 +14,7 @@ resources:
  - name: hdi_db
    parameters:
       config:
+         database_id: 91b58b7e-4599-45c4-a61e-e7731cf19cff
          schema: SHOWCASEHDI
    properties:
       hdi-container-name: ${service-name}
