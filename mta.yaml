@@ -1,0 +1,20 @@
+ID: showcasehdi
+_schema-version: '2.1'
+description: HANA Showcase HDI
+version: 0.0.1
+
+modules:
+ - name: db
+   type: hdb
+   path: db
+   requires:
+    - name: hdi_db
+
+resources:
+ - name: hdi_db
+   parameters:
+      config:
+         schema: SHOWCASEHDI
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
