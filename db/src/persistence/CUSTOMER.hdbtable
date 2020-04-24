@@ -1,0 +1,15 @@
+TABLE "CUSTOMER"(
+	"CUST_ID"				INTEGER NOT NULL	COMMENT 'Customer ID',
+	"CUST_CPF"				BIGINT				COMMENT 'Customer CPF is similar to the Social Security Number in US, but for Brazilian citizens and legally permanent foreigners',
+	"CUST_NAME" 			NVARCHAR(50)		COMMENT 'Customer name',
+	"CUST_BIRTH_DATE"		DATE				COMMENT 'Customer birth date',
+	"CUST_SEX"				NVARCHAR(1) 		COMMENT 'Customer sex - M-Male, F-Female',
+	"CUST_SEGMENT"			NVARCHAR(1) 		COMMENT 'Customer segment - 1-Silver , 2-Gold , 3-Platinum',
+	"CUST_COUNTRY"			NVARCHAR(2) 		COMMENT 'Customer country',
+	"CUST_STATE"			NVARCHAR(2) 		COMMENT 'Customer state',
+	"CUST_LIFE_SPEND"		DOUBLE				COMMENT 'Customer life spend, everything the customer has already paid in credit card invoices',
+	"CUST_AVG_SPEND"		DOUBLE				COMMENT 'Customer average monthly spend',
+	"CUST_INCOME"			DOUBLE				COMMENT 'Customer montlhy income',
+	"CUST_TWEETER_LOGIN"	NVARCHAR(20)		COMMENT 'Customer Tweeter login',
+	PRIMARY KEY ("CUST_ID")
+) UNLOAD PRIORITY 0 AUTO MERGE;
