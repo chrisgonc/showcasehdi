@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_CustomerGDPR" applyPrivilegeType="SQL_ANALYTIC_PRIVILEGE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Customer data restricted by GDPR"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CUSTOMER">
+    <resourceUri>CUSTOMER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="CUSTOMER">
+  <attributes>
+    <attribute id="CUST_ID" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer ID"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_ID"/>
+    </attribute>
+    <attribute id="CUST_CPF" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer CPF is similar to the Social Security Number in US, but for Brazilian citizens and legally permanent foreigners"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_CPF"/>
+    </attribute>
+    <attribute id="CUST_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer name"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_NAME"/>
+    </attribute>
+    <attribute id="CUST_BIRTH_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer birth date"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_BIRTH_DATE"/>
+    </attribute>
+    <attribute id="CUST_SEX" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer sex - M-Male, F-Female"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_SEX"/>
+    </attribute>
+    <attribute id="CUST_SEGMENT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer segment - 1-Silver , 2-Gold , 3-Platinum"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_SEGMENT"/>
+    </attribute>
+    <attribute id="CUST_COUNTRY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer country"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_COUNTRY"/>
+    </attribute>
+    <attribute id="CUST_STATE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer state"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_STATE"/>
+    </attribute>
+    <attribute id="CUST_LIFE_SPEND" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer life spend, everything the customer has already paid in credit card invoices"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_LIFE_SPEND"/>
+    </attribute>
+    <attribute id="CUST_AVG_SPEND" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer average monthly spend"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_AVG_SPEND"/>
+    </attribute>
+    <attribute id="CUST_TWEETER_LOGIN" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer Tweeter login"/>
+      <keyMapping columnObjectName="CUSTOMER" columnName="CUST_TWEETER_LOGIN"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

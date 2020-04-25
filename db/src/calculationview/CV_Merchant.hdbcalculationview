@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Merchant" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Merchant"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="MERCHANT">
+    <resourceUri>MERCHANT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="MERCHANT">
+  <attributes>
+    <attribute id="MER_ID" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Merchant ID"/>
+      <keyMapping columnObjectName="MERCHANT" columnName="MER_ID"/>
+    </attribute>
+    <attribute id="MER_CNPJ" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Merchant CNPJ identifies one company for the Brazilian government"/>
+      <keyMapping columnObjectName="MERCHANT" columnName="MER_CNPJ"/>
+    </attribute>
+    <attribute id="MER_SEGMENT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Merchant segment: 1-Retailer, 2-Services, 3-Tourism"/>
+      <keyMapping columnObjectName="MERCHANT" columnName="MER_SEGMENT"/>
+    </attribute>
+    <attribute id="MER_ADDRESS" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Merchant address"/>
+      <keyMapping columnObjectName="MERCHANT" columnName="MER_ADDRESS"/>
+    </attribute>
+    <attribute id="MER_FLAG_VIRTUAL_STORE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Merchant is virtual store? 0-No , 1-Yes"/>
+      <keyMapping columnObjectName="MERCHANT" columnName="MER_FLAG_VIRTUAL_STORE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

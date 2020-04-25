@@ -1,0 +1,9 @@
+{ "role":{   
+	"name": "showcasehdischema",
+	"schema_privileges":[
+	  {
+	    "privileges": ["SELECT","INSERT","UPDATE","DELETE","EXECUTE"]
+	  }
+	]
+  }
+}

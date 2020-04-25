@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Card_Transactions_HotWarm" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Card Transactions Hot &amp; Warm"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CARD_TRANSACTIONS_HOTWARM">
+    <resourceUri>CARD_TRANSACTIONS_HOTWARM</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="CARD_TRANSACTIONS_HOTWARM">
+  <attributes>
+    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false" key="true">
+      <descriptions defaultDescription="Transaction ID"/>
+      <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_ID"/>
+    </attribute>
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction date"/>
+      <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_DATE"/>
+    </attribute>
+    <attribute id="CT_CARD_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card ID"/>
+      <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_CARD_ID"/>
+    </attribute>
+    <attribute id="CT_CUST_ID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer ID"/>
+      <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_CUST_ID"/>
+    </attribute>
+    <attribute id="CT_MER_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Merchant ID"/>
+      <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_MER_ID"/>
+    </attribute>
+    <attribute id="CT_FLAG_FRAUD" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction is fraud? 0-No, 1-Yes"/>
+      <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_FLAG_FRAUD"/>
+    </attribute>
+    <attribute id="CT_STATUS" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction status - 0-Inactive, 1-Active"/>
+      <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_STATUS"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CT_AMOUNT" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction amount"/>
+      <measureMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

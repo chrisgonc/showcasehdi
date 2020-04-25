@@ -1,4 +1,4 @@
-COLUMN TABLE "CARD_TRANSACTIONS"(
+COLUMN TABLE "CARD_TRANSACTIONS_HOTWARM"(
 	"CT_ID" 		INTEGER NOT NULL COMMENT 'Transaction ID',
 	"CT_DATE"		DATE	NOT NULL COMMENT 'Transaction date',
 	"CT_CARD_ID"	INTEGER NOT NULL COMMENT 'Card ID',
@@ -7,5 +7,8 @@ COLUMN TABLE "CARD_TRANSACTIONS"(
 	"CT_AMOUNT" 	DOUBLE	NOT NULL COMMENT 'Transaction amount',
 	"CT_FLAG_FRAUD" INTEGER 		 COMMENT 'Transaction is fraud? 0-No, 1-Yes',
 	"CT_STATUS" 	INTEGER 		 COMMENT 'Transaction status - 0-Inactive, 1-Active',
-	PRIMARY KEY ("CT_ID")
-) COMMENT 'Card Transactions (full datsaet in-memory)' COLUMN LOADABLE;
+	PRIMARY KEY ("CT_ID", "CT_DATE")
+) PARTITION BY RANGE (year("CT_DATE"))
+	((partition '2000' <= values < '2020' PAGE LOADABLE, 
+	  partition others COLUMN LOADABLE))
+COMMENT 'Card Transactions hot & warm data (partition)';
