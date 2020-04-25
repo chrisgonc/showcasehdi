@@ -1,0 +1,10 @@
+{ "role":{   
+	"name": "assistantcustomer1",
+	"object_privileges":[
+	  {"name":"CV_CustomerGDPR","type": "VIEW","privileges":["SELECT","UNMASKED"]}
+	],
+	"schema_analytic_privileges":[
+	  {"privileges":["customerid1"]}
+	]
+  }
+}

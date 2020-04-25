@@ -1,0 +1,12 @@
+{ "role":{   
+	"name": "assistantsegment1",
+	"object_privileges":[
+	  {"name":"CV_Card","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_CustomerGDPR","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_Merchant","type": "VIEW","privileges":["SELECT"]}
+	],
+	"schema_analytic_privileges":[
+	  {"privileges":["customersegment1"]}
+	]
+  }
+}

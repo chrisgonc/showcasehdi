@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" id="customerid1" privilegeType="SQL_ANALYTIC_PRIVILEGE" schemaVersion="1.1">
+<descriptions defaultDescription="customerid1"/>
+<securedModels>
+  <modelUri>CV_CustomerGDPR</modelUri>
+</securedModels>
+<restriction>
+  <filter attributeName="CUST_ID" xsi:type="Privilege:AttributeFilter">
+    <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="1" lowValue="undefined" highValue="undefined"/>
+  </filter>
+  <attributeName>CUST_ID</attributeName>
+  <originInformationModelUri>CV_CustomerGDPR</originInformationModelUri>
+</restriction>
+</Privilege:analyticPrivilege>

@@ -1,0 +1,10 @@
+{ "role":{   
+	"name": "financialuser",
+	"object_privileges":[
+	  {"name":"CV_Card","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_Customer","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_Card_Transactions","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_Merchant","type": "VIEW","privileges":["SELECT"]}
+	]
+  }
+}
