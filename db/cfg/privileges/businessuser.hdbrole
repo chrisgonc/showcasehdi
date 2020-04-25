@@ -2,7 +2,7 @@
 	"name": "businessuser",
 	"object_privileges":[
 	  {"name":"CV_Card","type": "VIEW","privileges":["SELECT"]},
-	  {"name":"VW_CUSTOMER_ANONIMIZED","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"VW_CUSTOMER_ANONYMIZED","type": "VIEW","privileges":["SELECT"]},
 	  {"name":"CV_Merchant","type": "VIEW","privileges":["SELECT"]}
 	]
   }
