@@ -7,5 +7,5 @@ COLUMN TABLE "CARD_TRANSACTIONS"(
 	"CT_AMOUNT" 	DOUBLE	NOT NULL COMMENT 'Transaction amount',
 	"CT_FLAG_FRAUD" INTEGER 		 COMMENT 'Transaction is fraud? 0-No, 1-Yes',
 	"CT_STATUS" 	INTEGER 		 COMMENT 'Transaction status - 0-Inactive, 1-Active',
-	PRIMARY KEY ("CT_ID")
+	PRIMARY KEY ("CT_ID","CT_DATE")
 ) COMMENT 'Card Transactions (full datsaet in-memory)' COLUMN LOADABLE;

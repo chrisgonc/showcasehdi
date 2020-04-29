@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Star_Transactions_Tiering" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" analyticViewCompatibilityMode="true">
+<descriptions defaultDescription="Star Transactions (tiering)"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CV_Card_Transactions_HotWarm">
+    <resourceUri>CV_Card_Transactions_HotWarm</resourceUri>
+  </DataSource>
+  <DataSource id="HDL_CARD_TRANSACTIONS_COLD">
+    <resourceUri>HDL_CARD_TRANSACTIONS_COLD</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="CT_ID"/>
+      <viewAttribute id="CT_DATE"/>
+      <viewAttribute id="CT_CARD_ID"/>
+      <viewAttribute id="CT_CUST_ID"/>
+      <viewAttribute id="CT_MER_ID"/>
+      <viewAttribute id="CT_AMOUNT" aggregationType="sum"/>
+      <viewAttribute id="CT_FLAG_FRAUD"/>
+      <viewAttribute id="CT_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_Card_Transactions_HotWarm" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_ID" source="CT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_DATE" source="CT_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_CARD_ID" source="CT_CARD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_CUST_ID" source="CT_CUST_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_MER_ID" source="CT_MER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_AMOUNT" source="CT_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_FLAG_FRAUD" source="CT_FLAG_FRAUD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_STATUS" source="CT_STATUS"/>
+    </input>
+    <input node="HDL_CARD_TRANSACTIONS_COLD" emptyUnionBehavior="NO_ROW">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_ID" source="CT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_DATE" source="CT_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_CARD_ID" source="CT_CARD_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_CUST_ID" source="CT_CUST_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_MER_ID" source="CT_MER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_AMOUNT" source="CT_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_FLAG_FRAUD" source="CT_FLAG_FRAUD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CT_STATUS" source="CT_STATUS"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="CT_ID"/>
+    </attribute>
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction date"/>
+      <keyMapping columnObjectName="Union_1" columnName="CT_DATE"/>
+    </attribute>
+    <attribute id="CT_FLAG_FRAUD" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction is fraud? 0-No, 1-Yes"/>
+      <keyMapping columnObjectName="Union_1" columnName="CT_FLAG_FRAUD"/>
+    </attribute>
+    <attribute id="CT_STATUS" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction status - 0-Inactive, 1-Active"/>
+      <keyMapping columnObjectName="Union_1" columnName="CT_STATUS"/>
+    </attribute>
+    <attribute id="CT_CARD_ID$local">
+      <descriptions defaultDescription="Card ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="CT_CARD_ID"/>
+    </attribute>
+    <attribute id="CT_CUST_ID$local">
+      <descriptions defaultDescription="Customer ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="CT_CUST_ID"/>
+    </attribute>
+    <attribute id="CT_MER_ID$local">
+      <descriptions defaultDescription="Merchant ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="CT_MER_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CT_AMOUNT" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction amount"/>
+      <measureMapping columnObjectName="Union_1" columnName="CT_AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="CV_Card">
+      <attributes>
+        <attributeRef>CT_CARD_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CARD_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_Customer">
+      <attributes>
+        <attributeRef>CT_CUST_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CUST_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_Merchant">
+      <attributes>
+        <attributeRef>CT_MER_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>MER_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="234"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Union_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="257" y="-5"/>
+      <rectangleSize width="179"/>
+    </shape>
+    <shape modelObjectName="CV_Card" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="-180" y="-132"/>
+      <rectangleSize width="210"/>
+    </shape>
+    <shape modelObjectName="CV_Customer" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="216"/>
+    </shape>
+    <shape modelObjectName="CV_Merchant" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="920" y="30"/>
+      <rectangleSize width="241"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
