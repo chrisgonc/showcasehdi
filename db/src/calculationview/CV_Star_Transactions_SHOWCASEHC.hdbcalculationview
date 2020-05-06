@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Star_Transactions" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="Star Transactions"/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Star_Transactions_SHOWCASEHC" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" analyticViewCompatibilityMode="true">
+<descriptions defaultDescription="Star Transactions (join on SHOWCASEHC)"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="CV_Card_Transactions">
-    <resourceUri>CV_Card_Transactions</resourceUri>
+  <DataSource id="CV_Card_Transactions_SHOWCASEHC">
+    <resourceUri>CV_Card_Transactions_SHOWCASEHC</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -21,7 +21,7 @@
       <viewAttribute id="CT_STATUS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="CV_Card_Transactions"/>
+    <input node="CV_Card_Transactions_SHOWCASEHC"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Projection_1">
@@ -30,7 +30,7 @@
       <descriptions defaultDescription="Transaction ID"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_ID"/>
     </attribute>
-    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false" key="true">
+    <attribute id="CT_DATE" key="true" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Transaction date"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_DATE"/>
     </attribute>
@@ -42,13 +42,13 @@
       <descriptions defaultDescription="Transaction status - 0-Inactive, 1-Active"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_STATUS"/>
     </attribute>
-    <attribute id="CT_CARD_ID$local">
-      <descriptions defaultDescription="Card ID"/>
-      <keyMapping columnObjectName="Projection_1" columnName="CT_CARD_ID"/>
-    </attribute>
     <attribute id="CT_CUST_ID$local">
       <descriptions defaultDescription="Customer ID"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_CUST_ID"/>
+    </attribute>
+    <attribute id="CT_CARD_ID$local">
+      <descriptions defaultDescription="Card ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_CARD_ID"/>
     </attribute>
     <attribute id="CT_MER_ID$local">
       <descriptions defaultDescription="Merchant ID"/>
@@ -66,16 +66,6 @@
   <restrictedMeasures/>
   <localDimensions/>
   <sharedDimensions>
-    <logicalJoin associatedObjectUri="CV_Card">
-      <attributes>
-        <attributeRef>CT_CARD_ID$local</attributeRef>
-      </attributes>
-      <associatedAttributeNames>
-        <attributeName>CARD_ID</attributeName>
-      </associatedAttributeNames>
-      <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
-      <associatedAttributeFeatures/>
-    </logicalJoin>
     <logicalJoin associatedObjectUri="CV_Customer">
       <attributes>
         <attributeRef>CT_CUST_ID$local</attributeRef>
@@ -96,35 +86,43 @@
       <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
       <associatedAttributeFeatures/>
     </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_Card">
+      <attributes>
+        <attributeRef>CT_CARD_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CARD_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
   </sharedDimensions>
 </logicalModel>
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="110" y="161"/>
-    
-      <rectangleSize width="160"/>
+      <upperLeftCorner x="40" y="85"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="135" y="378"/>
+      <upperLeftCorner x="100" y="261"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
-      <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape modelObjectName="CV_Card" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
-      <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="210"/>
+      <upperLeftCorner x="687" y="183"/>
+      <rectangleSize width="179"/>
     </shape>
     <shape modelObjectName="CV_Customer" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
-      <upperLeftCorner x="200" y="183"/>
+      <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="216"/>
     </shape>
     <shape modelObjectName="CV_Merchant" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
-      <upperLeftCorner x="568" y="79"/>
+      <upperLeftCorner x="620" y="30"/>
       <rectangleSize width="241"/>
+    </shape>
+    <shape modelObjectName="CV_Card" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="920" y="30"/>
+      <rectangleSize width="210"/>
     </shape>
   </shapes>
 </layout>

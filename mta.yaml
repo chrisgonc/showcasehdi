@@ -16,6 +16,7 @@ resources:
       config:
          database_id: '91b58b7e-4599-45c4-a61e-e7731cf19cff'
          schema: SHOWCASEHDI
+      service-name: showcasehdi
    properties:
       hdi-container-name: ${service-name}
    type: com.sap.xs.hdi-container

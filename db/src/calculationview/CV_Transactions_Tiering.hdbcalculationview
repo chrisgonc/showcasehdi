@@ -24,7 +24,7 @@
       <viewAttribute id="CT_STATUS" aggregationType="sum"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="CARD_TRANSACTIONS_HOTWARM">
+    <input node="CARD_TRANSACTIONS_HOTWARM" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_ID" source="CT_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_DATE" source="CT_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_CARD_ID" source="CT_CARD_ID"/>
@@ -34,7 +34,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_FLAG_FRAUD" source="CT_FLAG_FRAUD"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_STATUS" source="CT_STATUS"/>
     </input>
-    <input node="HDL_CARD_TRANSACTIONS_COLD">
+    <input node="HDL_CARD_TRANSACTIONS_COLD" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_ID" source="CT_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_DATE" source="CT_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CT_CARD_ID" source="CT_CARD_ID"/>
@@ -48,11 +48,11 @@
 </calculationViews>
 <logicalModel id="Union_1">
   <attributes>
-    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false" key="true">
       <descriptions defaultDescription="Transaction ID"/>
       <keyMapping columnObjectName="Union_1" columnName="CT_ID"/>
     </attribute>
-    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false" key="true">
       <descriptions defaultDescription="Transaction date"/>
       <keyMapping columnObjectName="Union_1" columnName="CT_DATE"/>
     </attribute>

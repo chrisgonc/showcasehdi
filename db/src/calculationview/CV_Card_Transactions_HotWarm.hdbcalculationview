@@ -15,7 +15,7 @@
       <descriptions defaultDescription="Transaction ID"/>
       <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_ID"/>
     </attribute>
-    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false" key="true">
       <descriptions defaultDescription="Transaction date"/>
       <keyMapping columnObjectName="CARD_TRANSACTIONS_HOTWARM" columnName="CT_DATE"/>
     </attribute>
