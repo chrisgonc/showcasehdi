@@ -12,16 +12,13 @@ modules:
       properties:
         TARGET_CONTAINER: ~{hdi-container-name}
 
-
-
-    - name: cross-container-service-1
+    - name: cross-container-service-2
       group: SERVICE_REPLACEMENTS
 
       properties:
-        key: ServiceName_1
+        key: ServiceName_2
         service: ~{the-service-name}
                           
-
 
 resources:
  - name: hdi_db
@@ -34,9 +31,9 @@ resources:
       hdi-container-name: ${service-name}
    type: com.sap.xs.hdi-container
 
- - name: cross-container-service-1
+ - name: cross-container-service-2
    parameters:
-      service-name: remote_sources
+      service-name: hana_service_connection
    properties:
       the-service-name: ${service-name}
    type: org.cloudfoundry.existing-service
