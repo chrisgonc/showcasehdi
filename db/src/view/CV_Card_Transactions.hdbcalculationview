@@ -11,11 +11,11 @@
 <calculationViews/>
 <logicalModel id="CARD_TRANSACTIONS">
   <attributes>
-    <attribute id="CT_ID" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Transaction ID"/>
       <keyMapping columnObjectName="CARD_TRANSACTIONS" columnName="CT_ID"/>
     </attribute>
-    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false" key="true">
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Transaction date"/>
       <keyMapping columnObjectName="CARD_TRANSACTIONS" columnName="CT_DATE"/>
     </attribute>
@@ -31,11 +31,11 @@
       <descriptions defaultDescription="Merchant ID"/>
       <keyMapping columnObjectName="CARD_TRANSACTIONS" columnName="CT_MER_ID"/>
     </attribute>
-    <attribute id="CT_FLAG_FRAUD" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_FLAG_FRAUD" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Transaction is fraud? 0-No, 1-Yes"/>
       <keyMapping columnObjectName="CARD_TRANSACTIONS" columnName="CT_FLAG_FRAUD"/>
     </attribute>
-    <attribute id="CT_STATUS" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_STATUS" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Transaction status - 0-Inactive, 1-Active"/>
       <keyMapping columnObjectName="CARD_TRANSACTIONS" columnName="CT_STATUS"/>
     </attribute>
@@ -45,6 +45,10 @@
     <measure id="CT_AMOUNT" order="6" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Transaction amount"/>
       <measureMapping columnObjectName="CARD_TRANSACTIONS" columnName="CT_AMOUNT"/>
+    </measure>
+    <measure id="CT_FEE" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction fee charged from merchant"/>
+      <measureMapping columnObjectName="CARD_TRANSACTIONS" columnName="CT_FEE"/>
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
