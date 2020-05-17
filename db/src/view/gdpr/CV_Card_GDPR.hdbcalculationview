@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Card_GDPR" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Card (GDPR)"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="VW_CARD_GDPR">
+    <resourceUri>VW_CARD_GDPR</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="VW_CARD_GDPR">
+  <attributes>
+    <attribute id="CARD_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card ID"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_ID"/>
+    </attribute>
+    <attribute id="CARD_NUM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card number"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_NUM"/>
+    </attribute>
+    <attribute id="CARD_VALIDITY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card validity"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_VALIDITY"/>
+    </attribute>
+    <attribute id="CARD_FLAG" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card flag - 1-Visa, 2-Mastercard, 3-ELO"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_FLAG"/>
+    </attribute>
+    <attribute id="CARD_CATEGORY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card flag - 1-Visa, 2-Mastercard, 3-ELO"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_CATEGORY"/>
+    </attribute>
+    <attribute id="CARD_INTERNATIONAL" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card international - 0-No, 1-Yes"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_INTERNATIONAL"/>
+    </attribute>
+    <attribute id="CARD_LIMIT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card limit"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_LIMIT"/>
+    </attribute>
+    <attribute id="CARD_STATUS" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARD_STATUS"/>
+      <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_STATUS"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="CV_Star_Transactions_Reduced_GDPR" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Star Transactions Reduced (GDPR)"/>
+<localVariables>
+  <variable id="IP_CT_DATE" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="DATE">
+      <valueDomain type="Date"/>
+      <selection/>
+      <defaultRange lowValue="2020-1-1"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="CV_Star_Transactions_GDPR">
+    <targetVariable name="IP_CT_DATE" resourceUri="CV_Star_Transactions_GDPR"/>
+    <localVariable>IP_CT_DATE</localVariable>
+  </mapping>
+</variableMappings>
+<dataSources>
+  <DataSource id="CV_Star_Transactions_GDPR">
+    <resourceUri>CV_Star_Transactions_GDPR</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="CV_Star_Transactions_GDPR" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction ID"/>
+      <keyMapping columnObjectName="CV_Star_Transactions_GDPR" columnName="CT_ID"/>
+    </attribute>
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="transaction date"/>
+      <keyMapping columnObjectName="CV_Star_Transactions_GDPR" columnName="CT_DATE"/>
+    </attribute>
+    <attribute id="CARD_NUM" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card number"/>
+      <keyMapping columnObjectName="CV_Star_Transactions_GDPR" columnName="CARD_NUM"/>
+    </attribute>
+    <attribute id="CARD_INTERNATIONAL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card international - 0-No, 1-Yes"/>
+      <keyMapping columnObjectName="CV_Star_Transactions_GDPR" columnName="CARD_INTERNATIONAL"/>
+    </attribute>
+    <attribute id="CUST_CPF" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer CPF is similar to the Social Security Number in US, but for Brazilian citizens and legally permanent foreigners"/>
+      <keyMapping columnObjectName="CV_Star_Transactions_GDPR" columnName="CUST_CPF"/>
+    </attribute>
+    <attribute id="CUST_NAME" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer name"/>
+      <keyMapping columnObjectName="CV_Star_Transactions_GDPR" columnName="CUST_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CT_AMOUNT" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction amount"/>
+      <measureMapping columnObjectName="CV_Star_Transactions_GDPR" columnName="CT_AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+
+  <filter>&quot;CT_DATE&quot;&gt;='$$IP_CT_DATE$$'</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

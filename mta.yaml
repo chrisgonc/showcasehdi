@@ -2,39 +2,27 @@ ID: showcasehdi
 _schema-version: '2.1'
 description: HANA Showcase HDI
 version: 0.0.1
-
 modules:
- - name: db
-   type: hdb
-   path: db
-   requires:
-    - name: hdi_db
-      properties:
-        TARGET_CONTAINER: ~{hdi-container-name}
-
-    - name: cross-container-service-2
-      group: SERVICE_REPLACEMENTS
-
-      properties:
-        key: ServiceName_2
-        service: ~{the-service-name}
-                          
-
+  - name: db
+    type: hdb
+    path: db
+    requires:
+      - name: hdi_db
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
 resources:
- - name: hdi_db
-   parameters:
+  - name: hdi_db
+    parameters:
       config:
-         database_id: '91b58b7e-4599-45c4-a61e-e7731cf19cff'
-         schema: SHOWCASEHDI
+        database_id: 91b58b7e-4599-45c4-a61e-e7731cf19cff
+        schema: SHOWCASEHDI
       service-name: showcasehdi
-   properties:
-      hdi-container-name: ${service-name}
-   type: com.sap.xs.hdi-container
-
- - name: cross-container-service-2
-   parameters:
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: cross-container-service-2
+    parameters:
       service-name: hana_service_connection
-   properties:
-      the-service-name: ${service-name}
-   type: org.cloudfoundry.existing-service
-
+    properties:
+      the-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service

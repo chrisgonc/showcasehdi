@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Card_Transactions_GDPR" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Card Transactions (GDPR)"/>
+<localVariables>
+  <variable id="IP_CT_DATE" parameter="true">
+    <descriptions defaultDescription="Please inform the date (equal or greater)">
+      <comment text="CT_DATE &gt;="/>
+    </descriptions>
+    <variableProperties datatype="DATE" mandatory="true" defaultValue="2019-1-1">
+      <valueDomain type="Date"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="VW_CARD_TRANSACTIONS_GDPR">
+    <resourceUri>VW_CARD_TRANSACTIONS_GDPR</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="VW_CARD_TRANSACTIONS_GDPR" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction ID"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_ID"/>
+    </attribute>
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction date"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_DATE"/>
+    </attribute>
+    <attribute id="CT_CARD_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Card ID"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_CARD_ID"/>
+    </attribute>
+    <attribute id="CT_CUST_ID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer ID"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_CUST_ID"/>
+    </attribute>
+    <attribute id="CT_MER_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Merchant ID"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_MER_ID"/>
+    </attribute>
+    <attribute id="CT_FLAG_FRAUD" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction is fraud? 0-No, 1-Yes"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_FLAG_FRAUD"/>
+    </attribute>
+    <attribute id="CT_STATUS" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction status - 0-Inactive, 1-Active"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_STATUS"/>
+    </attribute>
+    <attribute id="SESSION_USER" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="User"/>
+      <keyMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="SESSION_USER"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CT_AMOUNT" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction amount"/>
+      <measureMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_AMOUNT"/>
+    </measure>
+    <measure id="CT_FEE" order="7" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction fee charged from merchant"/>
+      <measureMapping columnObjectName="VW_CARD_TRANSACTIONS_GDPR" columnName="CT_FEE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <filter>&quot;CT_DATE&quot;&gt;='$$IP_CT_DATE$$'</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

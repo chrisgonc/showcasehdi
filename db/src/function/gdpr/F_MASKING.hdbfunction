@@ -1,6 +1,7 @@
-FUNCTION F_MASKING(input_masking_type NVARCHAR(3)) RETURNS output NVARCHAR(10) LANGUAGE SQLSCRIPT 
+FUNCTION F_MASKING(input_masking_type NVARCHAR(10)) RETURNS output NVARCHAR(10) LANGUAGE SQLSCRIPT 
 AS BEGIN
 	output=	case	when :input_masking_type='A1' THEN '0' 	-- for measures, 0 always sums 0
 					when :input_masking_type='A2' THEN '-1'	-- for IDs (-1 means "masked")
+					when :input_masking_type='A3' THEN 'RESTRICTED'	-- for nvarchar
 			end;
 END;

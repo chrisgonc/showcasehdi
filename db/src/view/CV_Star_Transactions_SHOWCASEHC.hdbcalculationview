@@ -3,6 +3,7 @@
 <descriptions defaultDescription="Star Transactions (join on SHOWCASEHC)"/>
 <localVariables/>
 <variableMappings/>
+<executionHints name="remote_join_relocation" value="1"/>
 <dataSources>
   <DataSource id="CV_Card_Transactions_SHOWCASEHC">
     <resourceUri>CV_Card_Transactions_SHOWCASEHC</resourceUri>
@@ -46,13 +47,13 @@
       <descriptions defaultDescription="Customer ID"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_CUST_ID"/>
     </attribute>
-    <attribute id="CT_CARD_ID$local">
-      <descriptions defaultDescription="Card ID"/>
-      <keyMapping columnObjectName="Projection_1" columnName="CT_CARD_ID"/>
-    </attribute>
     <attribute id="CT_MER_ID$local">
       <descriptions defaultDescription="Merchant ID"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_MER_ID"/>
+    </attribute>
+    <attribute id="CT_CARD_ID$local">
+      <descriptions defaultDescription="Card ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_CARD_ID"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -126,4 +127,4 @@
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario>
+</Calculation:scenario> 

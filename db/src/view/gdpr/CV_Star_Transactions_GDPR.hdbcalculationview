@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="CV_Star_Transactions_GDPR" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" analyticViewCompatibilityMode="true">
+<descriptions defaultDescription="Star Transactions (GDPR)"/>
+<localVariables>
+  <variable id="IP_CT_DATE" parameter="true">
+    <descriptions defaultDescription=" Please inform the date (equal or greater)">
+      <comment text="CT_DATE &gt;="/>
+    </descriptions>
+    <variableProperties datatype="DATE" mandatory="true" defaultValue="2019-1-1">
+      <valueDomain type="Date"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="CV_Card_Transactions_GDPR">
+    <targetVariable name="IP_CT_DATE" resourceUri="CV_Card_Transactions_GDPR"/>
+    <localVariable>IP_CT_DATE</localVariable>
+  </mapping>
+</variableMappings>
+<dataSources>
+  <DataSource id="CV_Card_Transactions_GDPR">
+    <resourceUri>CV_Card_Transactions_GDPR</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CT_ID"/>
+      <viewAttribute id="CT_DATE"/>
+      <viewAttribute id="CT_CARD_ID"/>
+      <viewAttribute id="CT_CUST_ID"/>
+      <viewAttribute id="CT_MER_ID"/>
+      <viewAttribute id="CT_AMOUNT"/>
+      <viewAttribute id="CT_FEE"/>
+      <viewAttribute id="CT_FLAG_FRAUD"/>
+      <viewAttribute id="CT_STATUS"/>
+      <viewAttribute id="SESSION_USER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_Card_Transactions_GDPR"/>
+    <filter>&quot;CT_DATE&quot;&gt;='$$IP_CT_DATE$$'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="CT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_ID"/>
+    </attribute>
+    <attribute id="CT_DATE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction date"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_DATE"/>
+    </attribute>
+    <attribute id="CT_FLAG_FRAUD" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction is fraud? 0-No, 1-Yes"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_FLAG_FRAUD"/>
+    </attribute>
+    <attribute id="CT_STATUS" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Transaction status - 0-Inactive, 1-Active"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_STATUS"/>
+    </attribute>
+    <attribute id="SESSION_USER" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="User"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SESSION_USER"/>
+    </attribute>
+    <attribute id="CT_CARD_ID$local">
+      <descriptions defaultDescription="CT_CARD_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_CARD_ID"/>
+    </attribute>
+    <attribute id="CT_CUST_ID$local">
+      <descriptions defaultDescription="CT_CUST_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_CUST_ID"/>
+    </attribute>
+    <attribute id="CT_MER_ID$local">
+      <descriptions defaultDescription="CT_MER_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CT_MER_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CT_AMOUNT" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction amount"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CT_AMOUNT"/>
+    </measure>
+    <measure id="CT_FEE" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction fee charged from merchant"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CT_FEE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="CV_Card">
+      <attributes>
+        <attributeRef>CT_CARD_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CARD_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_Customer">
+      <attributes>
+        <attributeRef>CT_CUST_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CUST_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="leftOuter" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_Merchant">
+      <attributes>
+        <attributeRef>CT_MER_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>MER_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_N" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="90" y="267"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="35" y="190"/>
+      <rectangleSize width="179"/>
+    </shape>
+    <shape modelObjectName="CV_Card" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="105" y="4"/>
+      <rectangleSize width="210"/>
+    </shape>
+    <shape modelObjectName="CV_Customer" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="216"/>
+    </shape>
+    <shape modelObjectName="CV_Merchant" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="920" y="30"/>
+      <rectangleSize width="241"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

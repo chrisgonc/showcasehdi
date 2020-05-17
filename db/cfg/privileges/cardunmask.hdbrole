@@ -1,8 +1,7 @@
 { "role":{   
 	"name": "cardunmask",
 	"object_privileges":[
-	  {"name":"CV_Card","type": "VIEW","privileges":["SELECT","UNMASKED"]},
-	  {"name":"CARD","type": "TABLE","privileges":["SELECT","UNMASKED"]}
+	  {"name":"VW_CARD_GDPR","type": "VIEW","privileges":["SELECT","UNMASKED"]}
 	]
   }
 }

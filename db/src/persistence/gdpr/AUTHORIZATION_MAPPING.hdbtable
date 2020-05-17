@@ -1,6 +1,7 @@
 COLUMN TABLE "AUTHORIZATION_MAPPING"(
 	"AM_USER_ID"		NVARCHAR(128) NOT NULL	COMMENT 'User ID - only one record per user ID',
+	"AM_TABLE"			NVARCHAR(128)			COMMENT 'Table referenced by masking',
 	"AM_MASKING_TYPE"	NVARCHAR(128)			COMMENT 'Masking type can handle multiples values, ex: A1,A2,A2...A99, B1,B2...Z99',
 	"AM_DESCRIPTION"	NVARCHAR(128)			COMMENT 'Masking description - ex: format for measures is 0 because the measure will sum 0, format for IDs is -1 because it groups all records hiding the information to the user',
-	PRIMARY KEY ("AM_USER_ID")
+	PRIMARY KEY ("AM_USER_ID","AM_TABLE")
 ) COMMENT 'Authorization table mapping, to be used in views and provide masking functionality' COLUMN LOADABLE UNLOAD PRIORITY 0;
