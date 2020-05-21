@@ -20,6 +20,8 @@
       <viewAttribute id="CT_AMOUNT"/>
       <viewAttribute id="CT_FLAG_FRAUD"/>
       <viewAttribute id="CT_STATUS"/>
+    
+      <viewAttribute id="CT_FEE"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_Card_Transactions_SHOWCASEHC"/>
@@ -35,11 +37,11 @@
       <descriptions defaultDescription="Transaction date"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_DATE"/>
     </attribute>
-    <attribute id="CT_FLAG_FRAUD" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_FLAG_FRAUD" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Transaction is fraud? 0-No, 1-Yes"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_FLAG_FRAUD"/>
     </attribute>
-    <attribute id="CT_STATUS" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CT_STATUS" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Transaction status - 0-Inactive, 1-Active"/>
       <keyMapping columnObjectName="Projection_1" columnName="CT_STATUS"/>
     </attribute>
@@ -61,6 +63,11 @@
     <measure id="CT_AMOUNT" order="3" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="Transaction amount"/>
       <measureMapping columnObjectName="Projection_1" columnName="CT_AMOUNT"/>
+    </measure>
+  
+    <measure id="CT_FEE" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Transaction fee charged from merchant"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CT_FEE"/>
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
@@ -127,4 +134,4 @@
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario> 
+</Calculation:scenario>

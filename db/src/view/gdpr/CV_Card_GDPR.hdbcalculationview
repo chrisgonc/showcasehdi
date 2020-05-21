@@ -17,6 +17,7 @@
     </attribute>
     <attribute id="CARD_NUM" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Card number"/>
+      <maskingExpression>CONCAT('************', RIGHT(&quot;CARD_NUM&quot;, 4))</maskingExpression>
       <keyMapping columnObjectName="VW_CARD_GDPR" columnName="CARD_NUM"/>
     </attribute>
     <attribute id="CARD_VALIDITY" order="3" displayAttribute="false" attributeHierarchyActive="false">

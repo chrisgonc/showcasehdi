@@ -2,7 +2,7 @@
 	"name": "customerunmask",
 	"object_privileges":[
 	  {"name":"VW_CUSTOMER_ANONYMIZED","type": "VIEW","privileges":["SELECT","UNMASKED"]},
-	  {"name":"CV_Customer","type": "VIEW","privileges":["SELECT","UNMASKED"]},
+	  {"name":"CV_Customer_GDPR","type": "VIEW","privileges":["SELECT","UNMASKED"]},
 	  {"name":"CUSTOMER","type": "TABLE","privileges":["SELECT","UNMASKED"]}
 	]
   }

@@ -10,6 +10,16 @@ modules:
       - name: hdi_db
         properties:
           TARGET_CONTAINER: '~{hdi-container-name}'
+  - name: app
+    type: nodejs
+    path: app
+    provides:
+      - name: app_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_db
+      - name: db
 resources:
   - name: hdi_db
     parameters:
@@ -20,9 +30,3 @@ resources:
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-  - name: cross-container-service-2
-    parameters:
-      service-name: hana_service_connection
-    properties:
-      the-service-name: '${service-name}'
-    type: org.cloudfoundry.existing-service

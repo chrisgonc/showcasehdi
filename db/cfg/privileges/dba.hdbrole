@@ -5,7 +5,6 @@
 	  {"name":"CV_Card_Transactions","type": "VIEW","privileges":["SELECT"]},
 	  {"name":"CV_Customer","type": "VIEW","privileges":["SELECT"]},
 	  {"name":"VW_CUSTOMER_ANONYMIZED","type": "VIEW","privileges":["SELECT"]},
-	  {"name":"CV_CustomerGDPR","type": "VIEW","privileges":["SELECT"]},
 	  {"name":"CV_Merchant","type": "VIEW","privileges":["SELECT"]}
 	]
   }
