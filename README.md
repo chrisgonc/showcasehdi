@@ -41,7 +41,7 @@ CREATE REMOTE SOURCE "SAOLEOPOLDO" ADAPTER "hanaodbc" CONFIGURATION '<?xml versi
 <PropertyEntry name="dml_mode">readwrite</PropertyEntry>
 <PropertyEntry name="linkeddatabase_mode">optimized</PropertyEntry>
 <PropertyEntry name="extraadapterproperties"></PropertyEntry>
-</ConnectionProperties>' WITH CREDENTIAL TYPE 'PASSWORD' USING 'user=SAPADMIN;password=Saphana01';
+</ConnectionProperties>' WITH CREDENTIAL TYPE 'PASSWORD' USING 'user=SAPADMIN;password=xxx';
 
 CREATE REMOTE SOURCE "PALOALTO" ADAPTER "hanaodbc" CONFIGURATION '<?xml version="1.0" encoding="UTF-8"?>
 <ConnectionProperties name="connection_properties">
@@ -53,7 +53,7 @@ CREATE REMOTE SOURCE "PALOALTO" ADAPTER "hanaodbc" CONFIGURATION '<?xml version=
 <PropertyEntry name="dml_mode">readwrite</PropertyEntry>
 <PropertyEntry name="linkeddatabase_mode">optimized</PropertyEntry>
 <PropertyEntry name="extraadapterproperties"></PropertyEntry>
-</ConnectionProperties>' WITH CREDENTIAL TYPE 'PASSWORD' USING 'user=SAPADMIN;password=Saphana01';
+</ConnectionProperties>' WITH CREDENTIAL TYPE 'PASSWORD' USING 'user=SAPADMIN;password=xxx';
 
 call GET_REMOTE_SOURCE_PROPERTIES ('SQLSERVER', ?);
 
