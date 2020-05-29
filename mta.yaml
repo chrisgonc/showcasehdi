@@ -1,6 +1,7 @@
 ID: showcasehdi
 _schema-version: '2.1'
 description: HANA Showcase HDI
+provider: Christiano Hage
 version: 0.0.1
 modules:
   - name: db
