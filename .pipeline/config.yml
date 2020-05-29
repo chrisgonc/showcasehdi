@@ -2,3 +2,10 @@ general:
 steps:
   mtaBuild:
     buildTarget: 'CF'
+  cloudFoundryDeploy:
+    deployTool: 'mtaDeployPlugin'
+    deployType: 'standard'
+    cloudFoundry:
+      org: 'SAP Presales Cloud (NEO/FOUNDRY)_sappsbr'
+      space: 'PRD'
+      credentialsId: 'CF_CREDENTIALSID'
