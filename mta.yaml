@@ -25,7 +25,7 @@ resources:
   - name: hdi_db
     parameters:
       config:
-        database_id: 91b58b7e-4599-45c4-a61e-e7731cf19cff
+        database_id: e33af58c-6da5-4dba-9772-0802f432d479
         schema: SHOWCASEHDI
       service-name: showcasehdi
     properties:
