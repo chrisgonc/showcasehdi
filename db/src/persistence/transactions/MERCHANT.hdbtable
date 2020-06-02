@@ -5,5 +5,6 @@ COLUMN TABLE "MERCHANT"(
 	"MER_ADDRESS"				NVARCHAR(50)		COMMENT 'Merchant address',
 	"MER_POSITION"				ST_POINT(4326)		COMMENT 'Merchant GPS coordination for location - georeference',
 	"MER_FLAG_VIRTUAL_STORE"	INTEGER				COMMENT 'Merchant is virtual store? 0-No , 1-Yes',
+	"MER_NEW_FIELD"				INTEGER				COMMENT 'Merchant new field',
 	PRIMARY KEY ("MER_ID")
 ) COMMENT 'Merchant' COLUMN LOADABLE UNLOAD PRIORITY 0;
