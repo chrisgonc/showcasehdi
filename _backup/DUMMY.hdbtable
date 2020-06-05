@@ -1,3 +1,0 @@
-ROW TABLE "DUMMY"(
-	"DUMMY" NCHAR(1)
-);

@@ -265,8 +265,21 @@ FROM M_SQL_PLAN_CACHE WHERE STATEMENT_STRING LIKE '%CUST_STATE%'
 ORDER BY LAST_EXECUTION_TIMESTAMP DESC;
 
 ./hdbinst --silent --batch --path="/usr/sap/dataprovagent0" --agent_listener_port=30090 --agent_admin_port=30091
+./agentcli.sh --configAgent
+./agentcli.sh --setSecureProperty
 
 http://hdbgraph.wdf.sap.corp:8000/sap/hana/spatial/demos/demo_europe/index.html
+
+package.json para refresh nas estruturas das remote virtual tables
+{
+    "name": "deploy",
+    "dependencies": {
+        "@sap/hdi-deploy": "^3.*"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/hdi-deploy/deploy.js --treat-unmodified-as-modified"
+    }
+}
 
 The customer can implement the masking themselves. The best approach would be to create a SQL function with the masking type as a parameter for numeric columns directly in the view definition. 
 In the function, the customer is free to define what is returned according to the authorization of the session user (or current user for definer mode). 
