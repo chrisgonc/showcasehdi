@@ -59,6 +59,22 @@ call GET_REMOTE_SOURCE_PROPERTIES ('SQLSERVER', ?);
 
 MER_POSITION			: hana.ST_POINT(4326); --or 3857
 
+--CREATED ON HANA COCKPIT AS DBADMIN
+--CREATE USER HDIGRANTOR PASSWORD <password> NO FORCE_FIRST_PASSWORD_CHANGE SET USERGROUP DEFAULT;
+CREATE ROLE "sourcedata::external_access_g";
+CREATE ROLE "sourcedata::external_access";
+GRANT "sourcedata::external_access_g", "sourcedata::external_access" TO HDIGRANTOR WITH ADMIN OPTION;
+
+--RUN AS SAPADMIN
+GRANT SELECT, SELECT METADATA ON SCHEMA SAPADMIN               TO "sourcedata::external_access_g" WITH GRANT OPTION;
+GRANT ROLE ADMIN                                               TO "sourcedata::external_access_g" WITH GRANT OPTION;
+GRANT CREATE VIRTUAL TABLE ON REMOTE SOURCE "SHOWCASEHC"       TO "sourcedata::external_access_g" WITH GRANT OPTION;
+GRANT CREATE VIRTUAL TABLE ON REMOTE SOURCE "SYSRDL#CG_SOURCE" TO "sourcedata::external_access_g" WITH GRANT OPTION;
+GRANT CREATE VIRTUAL TABLE ON REMOTE SOURCE "SQLSERVER"        TO "sourcedata::external_access_g" WITH GRANT OPTION;
+GRANT CREATE VIRTUAL TABLE ON REMOTE SOURCE "EXCEL"            TO "sourcedata::external_access_g" WITH GRANT OPTION;
+GRANT SELECT, SELECT METADATA ON SCHEMA SAPADMIN               TO "sourcedata::external_access";
+
+
 object owner "SHOWCASEHDI#OO" is not authorized to access the "PALOALTO.SAPADMIN.TESTE" synonym target; 
 this user needs to be granted "SELECT" ("EXECUTE" for procedures) privileges on the target object as well as
  "LINKED DATABASE ON REMOTE SOURCE" privilege on remote source "PALOALTO". [8250528] 
