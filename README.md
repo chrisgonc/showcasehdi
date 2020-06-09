@@ -280,7 +280,8 @@ package.json para refresh nas estruturas das remote virtual tables
         "start": "node node_modules/@sap/hdi-deploy/deploy.js --treat-unmodified-as-modified"
     }
 }
-
+ --parameter validate_virtual_tables=true
+ 
 The customer can implement the masking themselves. The best approach would be to create a SQL function with the masking type as a parameter for numeric columns directly in the view definition. 
 In the function, the customer is free to define what is returned according to the authorization of the session user (or current user for definer mode). 
 The authorization can be managed simply and with good performance in a mapping table (UserName, Mask-Value). Our development recommends to only enforce top-level views for session users. 

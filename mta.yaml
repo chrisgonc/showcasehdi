@@ -26,7 +26,8 @@ resources:
     parameters:
       config:
         database_id: 91b58b7e-4599-45c4-a61e-e7731cf19cff
-        schema: SHOWCASEHDI
+        schema: showcasehdi
+        makeUniquename: false
       service-name: showcasehdi
     properties:
       hdi-container-name: '${service-name}'
