@@ -3,6 +3,9 @@
 	"object_privileges":[
 	  {"name":"CV_Card_GDPR","type": "VIEW","privileges":["SELECT"]},
 	  {"name":"VW_CUSTOMER_ANONYMIZED","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_Star_Transactions_Reduced_GDPR","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_Star_Transactions_GDPR","type": "VIEW","privileges":["SELECT"]},
+	  {"name":"CV_Star_Transactions_GDPRDim","type": "VIEW","privileges":["SELECT"]},
 	  {"name":"CV_Merchant","type": "VIEW","privileges":["SELECT"]}
 	]
   }

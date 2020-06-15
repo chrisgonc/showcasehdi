@@ -286,6 +286,7 @@ ORDER BY LAST_EXECUTION_TIMESTAMP DESC;
 
 http://hdbgraph.wdf.sap.corp:8000/sap/hana/spatial/demos/demo_europe/index.html
 
+ALTER VIRTUAL TABLE XXX REFRESH DEFINITION;
 package.json para refresh nas estruturas das remote virtual tables
 {
     "name": "deploy",
